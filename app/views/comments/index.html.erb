@@ -20,8 +20,20 @@
       <tr>
         <td><%= comment.title %></td>
         <td><%= comment.body %></td>
-        <td><%= comment.user.created_at %></td>
-        <td><%= comment.photo.user_id %></td>
+        <td>
+          <% if comment.user.present? %>
+            <a href="/users/<%= comment.user.id %>">
+              <%= comment.user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if comment.photo.present? %>
+            <a href="/photos/<%= comment.photo.id %>">
+              <%= comment.photo.user_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/comments/<%= comment.id %>" class="btn btn-primary">Show</a>
           
